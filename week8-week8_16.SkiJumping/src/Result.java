@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @author WONSEOB
  */
-public class Result {
+publicpublic class Result {
     private int length;
     private int[] votes;
     private Random randomGenerator = new Random();
@@ -42,29 +42,12 @@ public class Result {
     
     private int takeValidVotes() {
         int validVotesTotal = 0;
-        for (int i = 0; i < this.votes.length; i++) {
+//      fitst sort votes then leaving out min and max by adjusting the enumerator
+        Arrays.sort(votes);
+        for (int i = 1; i < this.votes.length-1; i++) {
             validVotesTotal += this.votes[i]; 
         }
-        return validVotesTotal-maxValue(this.votes)-minValue(this.votes);
+        return validVotesTotal;
     }
     
-    private static int maxValue(int[] votes) {
-	int max = votes[0];
-	for (int i = 0; i < votes.length; i++) {
-		if (votes[i] > max) {
-			max = votes[i];
-		}
-	}
-	return max;
-    }
-    
-    private static int minValue(int[] votes) {
-	int min = votes[0];
-	for (int i = 0; i < votes.length; i++) {
-		if (votes[i] < min) {
-			min = votes[i];
-		}
-	}
-	return min;
-    }
 }
